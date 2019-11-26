@@ -20,8 +20,8 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/k0kubun/sqldef/sqlparser/dependency/querypb"
-	"github.com/k0kubun/sqldef/sqlparser/dependency/sqltypes"
+	"github.com/proproto/cloudsqldef/sqlparser/dependency/querypb"
+	"github.com/proproto/cloudsqldef/sqlparser/dependency/sqltypes"
 )
 
 // ParsedQuery represents a parsed query where

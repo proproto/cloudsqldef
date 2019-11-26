@@ -7,10 +7,10 @@ import (
 
 	"github.com/howeyc/gopass"
 	"github.com/jessevdk/go-flags"
-	"github.com/k0kubun/sqldef"
-	"github.com/k0kubun/sqldef/adapter"
-	"github.com/k0kubun/sqldef/adapter/mysql"
-	"github.com/k0kubun/sqldef/schema"
+	"github.com/proproto/cloudsqldef"
+	"github.com/proproto/cloudsqldef/adapter"
+	"github.com/proproto/cloudsqldef/adapter/mysql"
+	"github.com/proproto/cloudsqldef/schema"
 )
 
 // Return parsed options and schema filename

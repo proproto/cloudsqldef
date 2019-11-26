@@ -5,11 +5,12 @@ import (
 	"log"
 	"os"
 
+	driver "github.com/go-sql-driver/mysql"
 	"github.com/howeyc/gopass"
 	"github.com/jessevdk/go-flags"
-	"github.com/proproto/cloudsqldef"
+	sqldef "github.com/proproto/cloudsqldef"
 	"github.com/proproto/cloudsqldef/adapter"
-	"github.com/proproto/cloudsqldef/adapter/postgres"
+	"github.com/proproto/cloudsqldef/adapter/mysql"
 	"github.com/proproto/cloudsqldef/schema"
 )
 
@@ -17,12 +18,11 @@ import (
 // TODO: Support `sqldef schema.sql -opt val...`
 func parseOptions(args []string) (adapter.Config, *sqldef.Options) {
 	var opts struct {
-		User     string `short:"U" long:"user" description:"PostgreSQL user name" value-name:"username" default:"postgres"`
-		Password string `short:"W" long:"password" description:"PostgreSQL user password, overridden by $PGPASS" value-name:"password"`
-		Host     string `short:"h" long:"host" description:"Host or socket directory to connect to the PostgreSQL server" value-name:"hostname" default:"127.0.0.1"`
-		Port     uint   `short:"p" long:"port" description:"Port used for the connection" value-name:"port" default:"5432"`
-		Prompt   bool   `long:"password-prompt" description:"Force PostgreSQL user password prompt"`
-		File     string `short:"f" long:"file" description:"Read schema SQL from the file, rather than stdin" value-name:"filename" default:"-"`
+		User     string `short:"u" long:"user" description:"MySQL user name" value-name:"user_name" default:"root"`
+		Password string `short:"p" long:"password" description:"MySQL user password, overridden by $MYSQL_PWD" value-name:"password"`
+		Instance string `short:"i" long:"instance" description:"Host to connect to the MySQL server" value-name:"host_name" default:"127.0.0.1"`
+		Prompt   bool   `long:"password-prompt" description:"Force MySQL user password prompt"`
+		File     string `long:"file" description:"Read schema SQL from the file, rather than stdin" value-name:"sql_file" default:"-"`
 		DryRun   bool   `long:"dry-run" description:"Don't run DDLs but just show them"`
 		Export   bool   `long:"export" description:"Just dump the current schema to stdout"`
 		SkipDrop bool   `long:"skip-drop" description:"Skip destructive changes such as DROP"`
@@ -30,7 +30,7 @@ func parseOptions(args []string) (adapter.Config, *sqldef.Options) {
 	}
 
 	parser := flags.NewParser(&opts, flags.None)
-	parser.Usage = "[option...] db_name"
+	parser.Usage = "[options] db_name"
 	args, err := parser.ParseArgs(args)
 	if err != nil {
 		log.Fatal(err)
@@ -59,7 +59,7 @@ func parseOptions(args []string) (adapter.Config, *sqldef.Options) {
 		SkipDrop: opts.SkipDrop,
 	}
 
-	password, ok := os.LookupEnv("PGPASS")
+	password, ok := os.LookupEnv("MYSQL_PWD")
 	if !ok {
 		password = opts.Password
 	}
@@ -77,11 +77,7 @@ func parseOptions(args []string) (adapter.Config, *sqldef.Options) {
 		DbName:   database,
 		User:     opts.User,
 		Password: password,
-		Host:     opts.Host,
-		Port:     int(opts.Port),
-	}
-	if _, err := os.Stat(config.Host); !os.IsNotExist(err) {
-		config.Socket = config.Host
+		Host:     opts.Instance,
 	}
 	return config, &options
 }
@@ -89,11 +85,16 @@ func parseOptions(args []string) (adapter.Config, *sqldef.Options) {
 func main() {
 	config, options := parseOptions(os.Args[1:])
 
-	database, err := postgres.NewDatabase(config)
+	db, err := mysql.NewCloudSQL(&driver.Config{
+		Addr:      config.Host,
+		User:      config.User,
+		Passwd:    config.Password,
+		ParseTime: true,
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer database.Close()
+	defer db.Close()
 
-	sqldef.Run(schema.GeneratorModePostgres, database, options)
+	sqldef.Run(schema.GeneratorModeMysql, db, options)
 }

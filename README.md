@@ -1,4 +1,4 @@
-# sqldef [![Build Status](https://travis-ci.org/k0kubun/sqldef.svg?branch=master)](https://travis-ci.org/k0kubun/sqldef)
+# sqldef [![Build Status](https://travis-ci.org/proproto/cloudsqldef.svg?branch=master)](https://travis-ci.org/proproto/cloudsqldef)
 
 The easiest idempotent MySQL/PostgreSQL schema management by SQL.
 
@@ -11,7 +11,7 @@ so there's no need to remember Ruby DSL.
 
 Download the single-binary executable for your favorite database from:
 
-https://github.com/k0kubun/sqldef/releases
+https://github.com/proproto/cloudsqldef/releases
 
 ## Usage
 
@@ -53,7 +53,7 @@ $ mysql -uroot test -e "select 1;"
 $ mysqldef -uroot test --export
 CREATE TABLE `user` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(191) DEFAULT 'k0kubun',
+  `name` varchar(191) DEFAULT 'proproto',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -66,7 +66,7 @@ Update the schema.sql like (instead of `ADD INDEX`, you can just add `KEY index_
 ```diff
  CREATE TABLE user (
    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   name VARCHAR(128) DEFAULT 'k0kubun',
+   name VARCHAR(128) DEFAULT 'proproto',
 +  created_at DATETIME NOT NULL
  ) Engine=InnoDB DEFAULT CHARSET=utf8mb4;
 +

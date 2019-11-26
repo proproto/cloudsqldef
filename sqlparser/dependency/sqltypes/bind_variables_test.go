@@ -21,7 +21,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/k0kubun/sqldef/sqlparser/dependency/querypb"
+	"github.com/proproto/cloudsqldef/sqlparser/dependency/querypb"
 )
 
 func TestProtoConversions(t *testing.T) {

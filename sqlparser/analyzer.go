@@ -25,7 +25,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/k0kubun/sqldef/sqlparser/dependency/sqltypes"
+	"github.com/proproto/cloudsqldef/sqlparser/dependency/sqltypes"
 )
 
 // These constants are used to identify the SQL statement type.

@@ -4,13 +4,23 @@ import (
 	"database/sql"
 	"fmt"
 
+	cloudsqlproxy "github.com/GoogleCloudPlatform/cloudsql-proxy/proxy/dialers/mysql"
 	driver "github.com/go-sql-driver/mysql"
-	"github.com/k0kubun/sqldef/adapter"
+	"github.com/proproto/cloudsqldef/adapter"
 )
 
 type MysqlDatabase struct {
 	config adapter.Config
 	db     *sql.DB
+}
+
+func NewCloudSQL(cfg *driver.Config) (adapter.Database, error) {
+	db, err := cloudsqlproxy.DialCfg(cfg)
+	if err != nil {
+		return nil, err
+	}
+
+	return &MysqlDatabase{db: db}, nil
 }
 
 func NewDatabase(config adapter.Config) (adapter.Database, error) {

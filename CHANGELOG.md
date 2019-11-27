@@ -1,60 +1,60 @@
 ## v0.5.9
 
-- Avoid unnecessarily generating diff for `BOOLEAN` type on mysqldef [#49](https://github.com/k0kubun/sqldef/pull/49)
+- Avoid unnecessarily generating diff for `BOOLEAN` type on mysqldef [#49](https://github.com/proproto/cloudsqldef/pull/49)
 
 ## v0.5.8
 
-- Add `--skip-drop` option to skip `DROP` statements [#44](https://github.com/k0kubun/sqldef/pull/44)
+- Add `--skip-drop` option to skip `DROP` statements [#44](https://github.com/proproto/cloudsqldef/pull/44)
 
 ## v0.5.7
 
-- Support `double precision` for psqldef [#42](https://github.com/k0kubun/sqldef/pull/42)
-- Support partial indexes syntax for psqldef [#41](https://github.com/k0kubun/sqldef/pull/41)
+- Support `double precision` for psqldef [#42](https://github.com/proproto/cloudsqldef/pull/42)
+- Support partial indexes syntax for psqldef [#41](https://github.com/proproto/cloudsqldef/pull/41)
 
 ## v0.5.6
 
 - Fix ordering between `NOT NULL` and `WITH TIME ZONE` for psqldef, related to v0.5.4 and v0.5.5
-  [#40](https://github.com/k0kubun/sqldef/pull/40)
+  [#40](https://github.com/proproto/cloudsqldef/pull/40)
 
 ## v0.5.5
 
-- Support `time` with and without timezone for psqldef [#39](https://github.com/k0kubun/sqldef/pull/39)
+- Support `time` with and without timezone for psqldef [#39](https://github.com/proproto/cloudsqldef/pull/39)
 
 ## v0.5.4
 
-- Support `timestamp` with and without timezone for psqldef [#37](https://github.com/k0kubun/sqldef/pull/37)
+- Support `timestamp` with and without timezone for psqldef [#37](https://github.com/proproto/cloudsqldef/pull/37)
 
 ## v0.5.3
 
-- Fix output length bug of psqldef since v0.5.0 [#36](https://github.com/k0kubun/sqldef/pull/36)
+- Fix output length bug of psqldef since v0.5.0 [#36](https://github.com/proproto/cloudsqldef/pull/36)
 
 ## v0.5.2
 
-- Support `timestamp` (without timezone) for psqldef [#34](https://github.com/k0kubun/sqldef/pull/34)
+- Support `timestamp` (without timezone) for psqldef [#34](https://github.com/proproto/cloudsqldef/pull/34)
 
 ## v0.5.1
 
-- Support `SMALLSERIAL`, `SERIAL`, `BIGSERIAL` for psqldef [#33](https://github.com/k0kubun/sqldef/pull/33)
+- Support `SMALLSERIAL`, `SERIAL`, `BIGSERIAL` for psqldef [#33](https://github.com/proproto/cloudsqldef/pull/33)
 
 ## v0.5.0
 
-- Remove `pg_dump` dependency for psqldef  [#32](https://github.com/k0kubun/sqldef/pull/32)
+- Remove `pg_dump` dependency for psqldef  [#32](https://github.com/proproto/cloudsqldef/pull/32)
 
 ## v0.4.14
 
-- Show `pg_dump` error output on failure [#30](https://github.com/k0kubun/sqldef/pull/30)
+- Show `pg_dump` error output on failure [#30](https://github.com/proproto/cloudsqldef/pull/30)
 
 ## v0.4.13
 
-- Preserve line feeds when using stdin [#28](https://github.com/k0kubun/sqldef/pull/28)
+- Preserve line feeds when using stdin [#28](https://github.com/proproto/cloudsqldef/pull/28)
 
 ## v0.4.12
 
-- Support reordering columns with the same names [#27](https://github.com/k0kubun/sqldef/issues/27)
+- Support reordering columns with the same names [#27](https://github.com/proproto/cloudsqldef/issues/27)
 
 ## v0.4.11
 
-- Support enum [#25](https://github.com/k0kubun/sqldef/issues/25)
+- Support enum [#25](https://github.com/proproto/cloudsqldef/issues/25)
 
 ## v0.4.10
 
@@ -62,7 +62,7 @@
 
 ## v0.4.9
 
-- Fix issues on handling primary key [#21](https://github.com/k0kubun/sqldef/issues/21)
+- Fix issues on handling primary key [#21](https://github.com/proproto/cloudsqldef/issues/21)
 
 ## v0.4.8
 

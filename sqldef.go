@@ -7,8 +7,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/k0kubun/sqldef/adapter"
-	"github.com/k0kubun/sqldef/schema"
+	"github.com/proproto/cloudsqldef/adapter"
+	"github.com/proproto/cloudsqldef/schema"
 )
 
 type Options struct {

@@ -42,7 +42,7 @@ func parseOptions(args []string) (adapter.Config, *sqldef.Options) {
 	}
 
 	if len(args) == 0 {
-		fmt.Print("No database is specified!\n\n")
+		fmt.Print("No database specified !\n\n")
 		parser.WriteHelp(os.Stdout)
 		os.Exit(1)
 	} else if len(args) > 1 {

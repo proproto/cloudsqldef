@@ -1,5 +1,7 @@
 # sqldef [![Build Status](https://travis-ci.org/proproto/cloudsqldef.svg?branch=master)](https://travis-ci.org/proproto/cloudsqldef)
 
+**This tool is modified to be used for Google Cloud SQL with SQL proxy assembled**.
+
 The easiest idempotent MySQL/PostgreSQL schema management by SQL.
 
 This is inspired by [Ridgepole](https://github.com/winebarrel/ridgepole) but using SQL,

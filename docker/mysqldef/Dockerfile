@@ -8,7 +8,7 @@ ENV CGO_ENABLED=0
 
 RUN go install -v github.com/proproto/cloudsqldef/cmd/mysqldef
 
-FROM gcr.io/distroless/static
+FROM alpine:3.12.0
 
 COPY --from=builder /go/bin/mysqldef /usr/local/bin/mysqldef
 
